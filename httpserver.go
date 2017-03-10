@@ -29,6 +29,7 @@ func (hs *HttpServer) ListenHttp(addr string) {
 	router.HandleFunc("/peer/{address}/announce/", hs.Announce)
 	router.HandleFunc("/peer/{address}/rsearch/", hs.PeerRSearch).Methods("POST")
 	router.HandleFunc("/peer/{address}/search/", hs.PeerSearch).Methods("POST")
+	router.HandleFunc("/peer/{address}/suggest/", hs.PeerSuggest).Methods("POST")
 	router.HandleFunc("/peer/{address}/recent/{page}/", hs.Recent)
 	router.HandleFunc("/peer/{address}/popular/{page}/", hs.Popular)
 	router.HandleFunc("/peer/{address}/mirror/", hs.Mirror)
@@ -248,6 +249,16 @@ func (hs *HttpServer) SelfSuggest(w http.ResponseWriter, r *http.Request) {
 	query := r.FormValue("query")
 
 	write_http_response(w, hs.CommandServer.SelfSuggest(CommandSuggest{query}))
+}
+
+func (hs *HttpServer) PeerSuggest(w http.ResponseWriter, r *http.Request) {
+	log.Info("HTTP: Self Suggest request")
+	vars := mux.Vars(r)
+
+	query := r.FormValue("query")
+	peer := vars["address"]
+
+	write_http_response(w, hs.CommandServer.PeerSuggest(CommandPeerSearch{CommandPeer{peer}, query, 0}))
 }
 
 // TODO: SelfSuggest after merge

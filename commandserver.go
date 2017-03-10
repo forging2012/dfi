@@ -410,6 +410,18 @@ func (cs *CommandServer) SelfSuggest(css CommandSuggest) CommandResult {
 
 	return CommandResult{err == nil, completions, err}
 }
+func (cs *CommandServer) PeerSuggest(css CommandPeerSearch) CommandResult {
+
+	if !cs.LocalPeer.Databases.Has(css.CommandPeer.Address) {
+		return CommandResult{true, nil, errors.New("That peer is not mirrored")}
+	}
+
+	db, _ := cs.LocalPeer.Databases.Get(css.Address)
+
+	completions, err := cs.LocalPeer.SearchProvider.Suggest(db.(*data.Database), css.Query)
+
+	return CommandResult{err == nil, completions, err}
+}
 func (cs *CommandServer) SelfSearch(css CommandSelfSearch) CommandResult {
 	log.Info("Command: Search request")
 
@@ -583,7 +595,7 @@ func (cs *CommandServer) StartCpuProfile(cf CommandFile) CommandResult {
 func (cs *CommandServer) StopCpuProfile() CommandResult {
 	pprof.StopCPUProfile()
 
-	return CommandResult{true,nil,nil}
+	return CommandResult{true, nil, nil}
 }
 
 func (cs *CommandServer) MemProfile(cf CommandFile) CommandResult {
