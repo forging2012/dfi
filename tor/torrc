@@ -1,0 +1,11 @@
+Log notice stderr
+
+## The directory for keeping all the keys/etc. By default, we store
+## things in $HOME/.tor on Unix, and in Application Data\tor on Windows.
+DataDirectory ./
+
+ControlPort 10051
+SocksPort 10050
+CookieAuthentication 1
+CookieAuthFileGroupReadable 1
+CookieAuthFile ./cookie
