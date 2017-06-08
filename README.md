@@ -2,7 +2,7 @@
 
 IRC: `#dfi` on Freenode
 
-[Whitepaper](https://github.com/dfi/whitepaper)
+[Whitepaper](https://github.com/dfindex/whitepaper)
 
 A distributed file sharing and indexing network.
 
