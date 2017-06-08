@@ -6,6 +6,10 @@ IRC: `#dfi` on Freenode
 
 A distributed file sharing and indexing network.
 
+## An old UI prototype, built on Electron
+
+![](http://i.giphy.com/26FmQ8QfY5zOglgGY.gif)
+
 
 ## What even is this?
 
