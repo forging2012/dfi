@@ -1,8 +1,11 @@
 # DFI
 
+## DEAD
+This project, after some advice, is no longer being actively worked on. The git history has been removed for a similar reason.
+
 IRC: `#dfi` on Freenode
 
-[Whitepaper](https://github.com/dfindex/whitepaper)
+[Whitepaper](https://github.com/wjh/whitepaper)
 
 A distributed file sharing and indexing network.
 
@@ -29,7 +32,7 @@ DFI can also be routed through any SOCKS proxy, and can create a Tor onion addre
 
 Now! It will likely have some bugs, but is mostly working.
 
-You can download DFI [here](https://github.com/dfi/dfi/releases)
+You can download DFI [here](https://github.com/wjh/dfi/releases)
 
 ## Building
 
